@@ -16,3 +16,19 @@ with st.sidebar:
         ["Executive Summary", "Bullet-point Key Takeaways", "Detailed Summary", "Section-wise Summary"]
     )
     st.info(f"Using Google Gemini 3 Flash for {mode}")
+    uploaded_file = st.file_uploader("Upload your document (PDF)", type=['pdf'])
+
+if uploaded_file is not None:
+    with st.spinner("Reading document and generating summary..."):
+        try:
+            # 1. Extract Text [cite: 38, 39]
+            reader = PdfReader(uploaded_file)
+            text_content = ""
+            for page in reader.pages:
+                text_content += page.extract_text()
+                prompt_prefix = {
+                "Executive Summary": "Provide a concise executive summary of the following text:",
+                "Bullet-point Key Takeaways": "Extract the most important key takeaways as a bulleted list from this text:",
+                "Detailed Summary": "Provide a comprehensive and detailed summary of the following content:",
+                "Section-wise Summary": "Break down and summarize the following text section by section:"
+            }
