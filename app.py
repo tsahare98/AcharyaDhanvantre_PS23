@@ -47,3 +47,8 @@ model = genai.GenerativeModel('gemini-2.5-flash')
                 file_name="summary.txt",
                 mime="text/plain"
             )
+ except Exception as e:
+            st.error(f"An error occurred: {e}")
+
+else:
+    st.info("Waiting for a PDF file to be uploaded...")
