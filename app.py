@@ -32,3 +32,18 @@ if uploaded_file is not None:
                 "Detailed Summary": "Provide a comprehensive and detailed summary of the following content:",
                 "Section-wise Summary": "Break down and summarize the following text section by section:"
             }
+model = genai.GenerativeModel('gemini-2.5-flash')
+            response = model.generate_content(f"{prompt_prefix[mode]}\n\n{text_content}")
+            
+            # 4. Display Results [cite: 11, 29]
+            st.success("Summary Generated!")
+            st.markdown("### Output")
+            st.write(response.text)
+            
+            # Download Button [cite: 7]
+            st.download_button(
+                label="Download Summary",
+                data=response.text,
+                file_name="summary.txt",
+                mime="text/plain"
+            )
