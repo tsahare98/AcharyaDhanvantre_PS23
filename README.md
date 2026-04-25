@@ -1,7 +1,4 @@
 # AcharyaDhanvantre_PS23
-Got it—that actually makes your project **clean and focused**, which is great. Here’s a **minimal, accurate README** tailored exactly to your setup (single `app.py`, Python + light AI):
-
----
 
 # 📄 Document Retriever System
 
